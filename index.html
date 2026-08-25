@@ -78,7 +78,7 @@ body {
 
 <body>
 
-  <img id="photo" src="image1.png">
+  <img id="photo" src="image4.png">
   <div id="screenSize"></div>
   <button id="backButton" aria-label="Return"></button>
 
@@ -92,7 +92,7 @@ let lastTap = 0;
 function showSecondImage() {
     if (!showingSecond) {
         showingSecond = true;
-        photo.src = "image3.png";
+        photo.src = "image5.png";
 
         // Turn on the invisible top-right button
         backButton.style.pointerEvents = "auto";
@@ -101,7 +101,7 @@ function showSecondImage() {
 
 function showFirstImage() {
     showingSecond = false;
-    photo.src = "image1.png";
+    photo.src = "image4.png";
 
     // Turn the invisible button back off
     backButton.style.pointerEvents = "none";
