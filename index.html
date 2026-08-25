@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Photo</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: black;
+      touch-action: manipulation;
+    }
+
+    #photo {
+      position: fixed;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      -webkit-user-select: none;
+      user-select: none;
+
+      -webkit-touch-callout: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <img id="photo" src="image1.jpg">
+
+  <script>
+    const photo = document.getElementById("photo");
+
+    let showingSecond = false;
+    let lastTap = 0;
+
+    photo.addEventListener("touchend", function () {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTap;
+
+      if (tapLength < 350 && tapLength > 0) {
+        showingSecond = !showingSecond;
+
+        photo.src = showingSecond
+          ? "image2.jpg"
+          : "image1.jpg";
+      }
+
+      lastTap = currentTime;
+    });
+  </script>
+
+</body>
+</html>
