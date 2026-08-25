@@ -17,27 +17,30 @@
 
   <style>
     html, body {
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: black;
-      touch-action: manipulation;
-    }
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+    background: #003A63;
+}
 
-    #photo {
-      position: fixed;
-      inset: 0;
+body {
+    position: fixed;
+    inset: 0;
+}
 
-      width: 100%;
-      height: 100%;
+#photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    object-fit: fill;
 
-      object-fit: fill;
-
-      -webkit-user-select: none;
-      user-select: none;
-
-      -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
     }
   </style>
 </head>
