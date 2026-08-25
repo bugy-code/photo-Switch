@@ -68,12 +68,23 @@ body {
     z-index: 20;
 }
 
-.settings-button {
+    .settings-button {
     position: fixed;
     bottom: 0;
     right: 0;
     width: 33.33%;
     height: 8%;
+    z-index: 20;
+}
+
+    .dashboard-button {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 33.33%;
+    height: 8%;
+    border: none;
+    background: transparent;
     z-index: 20;
 }
     
@@ -84,14 +95,16 @@ body {
 
   <img id="photo" src="image4.png">
 
-   <button id="locationsButton" class="locations-button" aria-label="Locations"></button>
+  <button id="locationsButton" class="locations-button" aria-label="Locations"></button>
   <button id="settingsButton" class="settings-button" aria-label="Settings"></button>
+  <button id="dashboardButton" class="dashboard-button" aria-label="Dashboard"></button>
   
   <button id="backButton" aria-label="Return"></button>
 
 <script>
 const photo = document.getElementById("photo");
 const backButton = document.getElementById("backButton");
+const dashboardButton = document.getElementById("dashboardButton");
 
 let showingSecond = false;
 let lastTap = 0;
@@ -112,8 +125,13 @@ function showFirstImage() {
 
     // Turn the invisible button back off
     backButton.style.pointerEvents = "none";
+  
 }
-
+dashboardButton.addEventListener("click", function() {
+    photo.src = "image4.png";
+  
+});
+  
 photo.addEventListener("touchend", function(event) {
     const now = Date.now();
     const timeBetweenTaps = now - lastTap;
