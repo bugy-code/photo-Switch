@@ -42,13 +42,7 @@ body {
     user-select: none;
     -webkit-touch-callout: none;
     }
- @media (min-width: 400px) {
-    #photo {
-        width: 100vw;
-        height: 100dvh);
-        object-fit: fill;
-    }
-}
+ 
     #backButton {
     position: fixed;
     top: 7%;
@@ -63,23 +57,13 @@ body {
 
     pointer-events: none;
 }
-    #screenSize {
-    position: fixed;
-    top: 180px;
-    left: 10px;
-    z-index: 9999;
-    background: red;
-    color: white;
-    font-size: 18px;
-    padding: 5px;
-}
+    
   </style>
 </head>
 
 <body>
 
   <img id="photo" src="image4.png">
-  <div id="screenSize"></div>
   <button id="backButton" aria-label="Return"></button>
 
 <script>
@@ -140,33 +124,6 @@ backButton.addEventListener("click", function(event) {
         showFirstImage();
     }
 });
-  function showScreenSize() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-
-    const screenW = window.screen.width;
-    const screenH = window.screen.height;
-
-    const visualW = window.visualViewport
-        ? Math.round(window.visualViewport.width)
-        : "N/A";
-
-    const visualH = window.visualViewport
-        ? Math.round(window.visualViewport.height)
-        : "N/A";
-
-    document.getElementById("screenSize").innerHTML =
-        "inner: " + w + " × " + h + "<br>" +
-        "screen: " + screenW + " × " + screenH + "<br>" +
-        "visual: " + visualW + " × " + visualH;
-}
-
-showScreenSize();
-window.addEventListener("resize", showScreenSize);
-
-if (window.visualViewport) {
-    window.visualViewport.addEventListener("resize", showScreenSize);
-}
   
 </script>
 
