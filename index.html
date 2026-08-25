@@ -42,31 +42,64 @@ body {
     user-select: none;
     -webkit-touch-callout: none;
     }
+    #backButton {
+    position: fixed;
+    top: 105px;
+    right: 18px;
+    width: 70px;
+    height: 70px;
+
+    border: none;
+    background: transparent;
+    padding: 0;
+    z-index: 10;
+
+    pointer-events: none;
+}
   </style>
 </head>
 
 <body>
 
   <img id="photo" src="image1.png">
+  <button id="backButton" aria-label="Return"></button>
 
- <script>
+<script>
 const photo = document.getElementById("photo");
+const backButton = document.getElementById("backButton");
 
 let showingSecond = false;
 let lastTap = 0;
 
-function switchImage() {
-    showingSecond = !showingSecond;
-    photo.src = showingSecond ? "image2.png" : "image1.png";
+function showSecondImage() {
+    if (!showingSecond) {
+        showingSecond = true;
+        photo.src = "image2.png";
+
+        // Turn on the invisible top-right button
+        backButton.style.pointerEvents = "auto";
+    }
+}
+
+function showFirstImage() {
+    showingSecond = false;
+    photo.src = "image1.png";
+
+    // Turn the invisible button back off
+    backButton.style.pointerEvents = "none";
 }
 
 photo.addEventListener("touchend", function(event) {
     const now = Date.now();
     const timeBetweenTaps = now - lastTap;
 
-    if (timeBetweenTaps > 40 && timeBetweenTaps < 400) {
+    if (
+        !showingSecond &&
+        timeBetweenTaps > 40 &&
+        timeBetweenTaps < 400
+    ) {
         event.preventDefault();
-        switchImage();
+        showSecondImage();
         lastTap = 0;
     } else {
         lastTap = now;
@@ -75,7 +108,19 @@ photo.addEventListener("touchend", function(event) {
 
 photo.addEventListener("dblclick", function(event) {
     event.preventDefault();
-    switchImage();
+
+    if (!showingSecond) {
+        showSecondImage();
+    }
+});
+
+backButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (showingSecond) {
+        showFirstImage();
+    }
 });
 </script>
 
