@@ -69,28 +69,23 @@ body {
     height: 8%;
 
     background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    appearance: none;
-    -webkit-appearance: none;
+    z-index: 9999;
 
-    z-index: 20;
+    pointer-events: auto;
+    touch-action: manipulation;
+    cursor: pointer;
 }
 
-/* Dashboard - left */
 .dashboard-button {
     left: 0;
 }
 
-/* Locations - middle */
 .locations-button {
     left: 33.33%;
 }
 
-/* Settings - right */
 .settings-button {
-    right: 0;
+    left: 66.66%;
 }
 
     button.locations-button,
@@ -123,6 +118,8 @@ button.dashboard-button {
 const photo = document.getElementById("photo");
 const backButton = document.getElementById("backButton");
 const dashboardButton = document.getElementById("dashboardButton");
+const locationsButton = document.getElementById("locationsButton");
+const settingsButton = document.getElementById("settingsButton");
 
 let showingSecond = false;
 let lastTap = 0;
@@ -149,6 +146,19 @@ dashboardButton.addEventListener("click", function() {
     photo.src = "image4.png";
   
 });
+
+  dashboardButton.addEventListener("click", function() {
+    showFirstImage();
+});
+
+locationsButton.addEventListener("click", function() {
+    photo.src = "locations.jpeg";
+});
+
+settingsButton.addEventListener("click", function() {
+    photo.src = "settings.jpeg";
+});
+
   
 photo.addEventListener("touchend", function(event) {
     const now = Date.now();
