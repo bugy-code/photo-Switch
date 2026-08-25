@@ -88,7 +88,7 @@ body {
     left: 66.66%;
 }
 
-    button.locations-button,
+button.locations-button,
 button.settings-button,
 button.dashboard-button {
     background: none !important;
@@ -153,10 +153,12 @@ dashboardButton.addEventListener("click", function() {
 
 locationsButton.addEventListener("click", function() {
     photo.src = "locations.jpeg";
+    photo.style.objectFit = "contain";
 });
 
 settingsButton.addEventListener("click", function() {
     photo.src = "settings.jpeg";
+    photo.style.objectFit = "contain";
 });
 
   
