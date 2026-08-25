@@ -10,7 +10,10 @@
 
   <meta name="apple-mobile-web-app-capable" content="yes">
 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
   <title>Photo</title>
+
 
   <style>
     html, body {
@@ -41,7 +44,7 @@
 
 <body>
 
-  <img id="photo" src="image1.jpg">
+  <img id="photo" src="image1.png">
 
   <script>
     const photo = document.getElementById("photo");
@@ -57,8 +60,8 @@
         showingSecond = !showingSecond;
 
         photo.src = showingSecond
-          ? "image2.jpg"
-          : "image1.jpg";
+          ? "image2.png"
+          : "image1.png";
       }
 
       lastTap = currentTime;
