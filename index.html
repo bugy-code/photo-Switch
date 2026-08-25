@@ -63,12 +63,23 @@ body {
 
     pointer-events: none;
 }
+    #screenSize {
+    position: fixed;
+    top: 180px;
+    left: 10px;
+    z-index: 9999;
+    background: red;
+    color: white;
+    font-size: 18px;
+    padding: 5px;
+}
   </style>
 </head>
 
 <body>
 
   <img id="photo" src="image1.png">
+  <div id="screenSize"></div>
   <button id="backButton" aria-label="Return"></button>
 
 <script>
@@ -129,6 +140,17 @@ backButton.addEventListener("click", function(event) {
         showFirstImage();
     }
 });
+  function showScreenSize() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+
+    document.getElementById("screenSize").textContent =
+        w + " × " + h;
+}
+
+showScreenSize();
+window.addEventListener("resize", showScreenSize);
+  
 </script>
 
 </body>
