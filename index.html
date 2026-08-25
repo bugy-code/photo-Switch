@@ -49,27 +49,35 @@ body {
 
   <img id="photo" src="image1.png">
 
-  <script>
-    const photo = document.getElementById("photo");
+ <script>
+const photo = document.getElementById("photo");
 
-    let showingSecond = false;
-    let lastTap = 0;
+let showingSecond = false;
+let lastTap = 0;
 
-    photo.addEventListener("touchend", function () {
-      const currentTime = new Date().getTime();
-      const tapLength = currentTime - lastTap;
+function switchImage() {
+    showingSecond = !showingSecond;
+    photo.src = showingSecond ? "image2.png" : "image1.png";
+}
 
-      if (tapLength < 350 && tapLength > 0) {
-        showingSecond = !showingSecond;
+photo.addEventListener("touchend", function(event) {
+    const now = Date.now();
+    const timeBetweenTaps = now - lastTap;
 
-        photo.src = showingSecond
-          ? "image2.png"
-          : "image1.png";
-      }
+    if (timeBetweenTaps > 40 && timeBetweenTaps < 400) {
+        event.preventDefault();
+        switchImage();
+        lastTap = 0;
+    } else {
+        lastTap = now;
+    }
+}, { passive: false });
 
-      lastTap = currentTime;
-    });
-  </script>
+photo.addEventListener("dblclick", function(event) {
+    event.preventDefault();
+    switchImage();
+});
+</script>
 
 </body>
 </html>
