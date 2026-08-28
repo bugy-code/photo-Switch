@@ -47,7 +47,18 @@ body {
     border: 0;
     outline: none;
 }
- 
+
+    body::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #YOUR_EXACT_BLUE;
+    z-index: 20;
+    pointer-events: none;
+}
     #backButton {
     position: fixed;
     top: 7%;
